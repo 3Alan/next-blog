@@ -3,7 +3,6 @@ body {
   --white-color: #fff;  
 }
 .container {
-  /* margin: 0 !important; */
   margin-top: 1.5rem;
 }
 .left-container{
@@ -28,8 +27,21 @@ body {
   font-size: 1.3rem !important;
   color: blue !important;
 }
+.article-list-header {
+  padding: 0 0.6rem;
+}
 @media (max-width: 576px) {
   .list-image {
     width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    background: #fff;
+  }
+  .left-container .list-item:hover {
+    background: #fff;
+    cursor: default;
+    transform: scale(1);
   }
 }

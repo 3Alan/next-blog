@@ -18,6 +18,7 @@
 .detail-content{
   padding: 1.5rem;
   font-size: 1rem;
+  overflow: hidden;
 }
 .detail-outline {
   padding: 0.3rem;

@@ -1,11 +1,21 @@
 .header {
   background-color: var(--white-color);
   padding: .4rem;
-  overflow: hidden;
-  height: 3.4rem;
+  height: 2.6rem;
   border-bottom: 1px solid #ccc;
-  /* box-sizing: content-box; */
+  box-sizing: content-box;
+  overflow: hidden;
 }
 .title {
-  line-height: 2.4rem;
+  line-height: 3rem;
+}
+@media (max-width: 768px) {
+  .show-menu {
+    font-size: 1.2rem;
+    display: block !important;
+    position: absolute;
+    right: 0;
+    top: 0;
+    line-height: 3rem;
+  }
 }
