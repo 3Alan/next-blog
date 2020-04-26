@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0.8rem;
+  background: #fff;
+  border-radius: 0.3rem;
+  margin-bottom: 1rem;
+}
+.account {
+  margin: 0 1rem;
+}
+.name {
+  color: blue;
+  font-size: 1.5rem;
+}

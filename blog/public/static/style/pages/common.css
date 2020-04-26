@@ -1,0 +1,35 @@
+body {
+  background: #f8f9fc;
+  --white-color: #fff;  
+}
+.container {
+  /* margin: 0 !important; */
+  margin-top: 1.5rem;
+}
+.left-container{
+  background: #fff;
+  border-radius: .3rem;
+  padding: 0.3rem;
+}
+.left-container .list-item {
+  padding: 0.9rem;
+  transition: all 0.4s ease-in-out;
+}
+.left-container .list-item:hover {
+  background: rgb(0, 0, 255, 0.1);
+  cursor: default;
+  transform: scale(1.01);
+}
+.right-container {
+  margin-left: 1rem;
+  height: 60vh;
+}
+.ant-list-item-meta-title a {
+  font-size: 1.3rem !important;
+  color: blue !important;
+}
+@media (max-width: 576px) {
+  .list-image {
+    width: 100%;
+  }
+}

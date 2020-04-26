@@ -1,0 +1,11 @@
+.header {
+  background-color: var(--white-color);
+  padding: .4rem;
+  overflow: hidden;
+  height: 3.4rem;
+  border-bottom: 1px solid #ccc;
+  /* box-sizing: content-box; */
+}
+.title {
+  line-height: 2.4rem;
+}
