@@ -3,7 +3,7 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 import { Button } from "antd";
 
-const DynamicComponent = dynamic(import("../../components/myNav"));
+// const DynamicComponent = dynamic(import("../../components/myNav"));
 
 export default () => {
   const [time, setTime] = useState(Date.now());
@@ -21,7 +21,7 @@ export default () => {
 
   return (
     <div>
-      {loadingComponet ? <DynamicComponent title="dynamic import" /> : ""}
+      {/* {loadingComponet ? <DynamicComponent title="dynamic import" /> : ""} */}
 
       <Button>ok</Button>
       <div>articleContent</div>

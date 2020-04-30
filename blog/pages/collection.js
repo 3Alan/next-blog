@@ -1,52 +1,33 @@
+import Header from '../components/header';
 import Head from 'next/head';
 import Link from 'next/link';
-import Router from 'next/router';
-import { useState, useEffect } from 'react';
-import Axios from 'axios';
-import Api from '../utils/api';
-import Header from '../components/header';
 import Author from '../components/author';
 import Footer from '../components/footer';
-import { Row, Col, List, Tag, Typography } from 'antd';
-import {
-  EyeOutlined,
-  CalendarOutlined,
-} from '@ant-design/icons';
+import collections from '../public/static/style/pages/collections.module.css';
+import Axios from 'axios';
+import Api from '../utils/api';
+import { useState, useEffect } from 'react';
+import { Row, Col, List, Typography, Breadcrumb } from 'antd';
+import { EyeOutlined, CalendarOutlined } from '@ant-design/icons';
 
-const Home = (props) => {
+const Collection = (props) => {
   const { Paragraph } = Typography;
-  const [color, setColor] = useState('red');
-  const [articleList, setArticleList] = useState(props.data);
-  const hasImg = true;
-
+  const [collectionList, setCollectionList] = useState(props.data);
+  const [title, setTitle] = useState(collectionList[0].typeName);
   const IconText = ({ icon, text }) => (
     <span>
       {React.createElement(icon, { style: { marginRight: 8 } })}
       {text}
     </span>
   );
-
-  function goToPageA() {
-    Router.push({
-      pathname: '/pageA',
-      query: {
-        title: 'click push title',
-      },
-    });
-  }
-
-  function changeColor() {
-    setColor(color === 'red' ? 'blue' : 'red');
-  }
+  const hasImg = true;
 
   return (
     <div>
       <Head>
-        <title>首页|Alan</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>{title}专题文章</title>
       </Head>
       <Header />
-
       <div className="container">
         <Row justify="center" type="flex">
           <Col
@@ -58,9 +39,18 @@ const Home = (props) => {
             xl={14}
           >
             <List
-              header={<div className="article-list-header">最新文章</div>}
+              header={
+                <div className="article-list-header">
+                  <Breadcrumb>
+                    <Breadcrumb.Item>
+                      <a href="/collections">专题</a>
+                    </Breadcrumb.Item>
+                    <Breadcrumb.Item>{title}</Breadcrumb.Item>
+                  </Breadcrumb>
+                </div>
+              }
               itemLayout="vertical"
-              dataSource={articleList}
+              dataSource={collectionList}
               renderItem={(item) => (
                 <List.Item
                   className="list-item"
@@ -76,10 +66,6 @@ const Home = (props) => {
                       text={item.viewCount}
                       key="list-vertical-view-o"
                     />,
-                    <Link
-                    href={`/collection?id=${item.typeId}`}
-                  ><Tag color="green">vue</Tag></Link>
-                    
                   ]}
                   extra={
                     hasImg ? (
@@ -97,12 +83,17 @@ const Home = (props) => {
                   <List.Item.Meta
                     title={
                       <Link
+                        as={`/detail/${item.id}`}
                         href={{ pathname: '/detail', query: { id: item.id } }}
                       >
                         <a>{item.title}</a>
                       </Link>
                     }
-                  description={<Paragraph ellipsis={{ rows: 4, expandable: true }}>{item.introduction}</Paragraph>}
+                    description={
+                      <Paragraph ellipsis={{ rows: 4, expandable: true }}>
+                        {item.introduction}
+                      </Paragraph>
+                    }
                   />
                 </List.Item>
               )}
@@ -113,15 +104,15 @@ const Home = (props) => {
           </Col>
         </Row>
       </div>
-
       <Footer />
     </div>
   );
 };
 
-Home.getInitialProps = async () => {
-  const res = await Axios(Api.getArticleList());
+Collection.getInitialProps = async (ctx) => {
+  const { id } = ctx.query;
+  const res = await Axios(Api.getCollectionById(id));
   return res.data;
 };
 
-export default Home;
+export default Collection;
