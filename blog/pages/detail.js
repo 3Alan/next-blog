@@ -6,7 +6,7 @@ import Footer from '../components/footer';
 import Axios from 'axios';
 import Api from '../utils/api';
 import { useState, useEffect } from 'react';
-import { Row, Col, Breadcrumb, Affix } from 'antd';
+import { Row, Col, Breadcrumb, Affix, BackTop } from 'antd';
 import { EyeOutlined, CalendarOutlined } from '@ant-design/icons';
 import marked from 'marked';
 import hl from 'highlight.js';
@@ -17,10 +17,12 @@ const Detail = (props) => {
     console.log(props);
   });
 
-  const [articleDetail, setArticleDetail] = useState(props);
+  const [articleDetail] = useState(props);
 
   const tocify = new Tocify();
   const renderer = new marked.Renderer();
+
+  //用来设置anchor
   renderer.heading = (text, level, raw) => {
     const anchor = tocify.add(text, level);
     return `<a id="${anchor}" href="#${anchor}" class="anchor-fix"><h${level}>${text}</h${level}></a>\n`;
@@ -39,6 +41,7 @@ const Detail = (props) => {
     },
   });
 
+  // 将markdown内容转化成html代码
   let content = marked(articleDetail.content);
 
   return (
@@ -88,6 +91,7 @@ const Detail = (props) => {
           </Affix>
         </Col>
       </Row>
+      <BackTop style={{height: 80, width: 40, background: '#CCC'}}>up</BackTop>
       <Footer />
     </div>
   );

@@ -1,0 +1,13 @@
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-container {
+  width: 360px;
+  margin-top: 150px;
+}
+.input-component {
+  margin-bottom: 20px;
+}

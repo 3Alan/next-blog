@@ -1,0 +1,53 @@
+.edit-container {
+  margin-top: 20px;
+}
+.save-btn {
+  margin-right: 10px;
+}
+.editor-preview  {
+  padding: 30px !important;
+}
+.editor-preview-side {
+  padding: 20px !important;
+}
+.editor-preview-side img, .editor-preview img {
+  width: 50%;
+  margin: 0 auto;
+}
+.editor-preview-side pre, .editor-preview pre{
+  display: block;
+  background-color:#f3f3f3;
+  padding: .5rem !important;
+  overflow-y: auto;
+  font-weight: 300;
+  font-family: Menlo, monospace;
+  border-radius: .3rem;
+  background-color: #283646 !important;
+}
+.editor-preview-side pre >code, .editor-preview pre>code{
+  border:0px !important;
+  background-color: #283646 !important;
+  color:#FFF;
+  font-size: 0.9rem;
+}
+.editor-preview-side code, .editor-preview code {
+  display: inline-block ;
+  background-color:#f3f3f3;
+  border:1px solid #fdb9cc;
+  border-radius:3px;
+  font-size: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color:#4f4f4f;
+  margin: 0px 3px;
+}
+.editor-preview-side iframe, .editor-preview iframe{
+  height: 34rem;
+}
+.CodeMirror .cm-spell-error:not(.cm-url):not(.cm-comment):not(.cm-tag):not(.cm-word) {
+  background: #fff !important;
+}
+.CodeMirror .CodeMirror-code .cm-comment {
+  background: #fff !important;
+  border-radius: 0 !important;
+}
