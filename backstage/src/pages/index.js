@@ -51,7 +51,7 @@ const Index = () => {
               <Breadcrumb.Item>Bill</Breadcrumb.Item>
             </Breadcrumb>
             <div className="site-layout-background" style={{ padding: 22, minHeight: 360 }}>
-              <Route path="/index/addArticle" component={AddArticle} exact />
+              <Route path="/index" component={AddArticle} exact />
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>Alan's Blog Management</Footer>

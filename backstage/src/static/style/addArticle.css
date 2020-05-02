@@ -33,16 +33,23 @@
 .editor-preview-side code, .editor-preview code {
   display: inline-block ;
   background-color:#f3f3f3;
-  border:1px solid #fdb9cc;
   border-radius:3px;
   font-size: 12px;
   padding-left: 5px;
   padding-right: 5px;
-  color:#4f4f4f;
+  color:#1890ff;
   margin: 0px 3px;
 }
 .editor-preview-side iframe, .editor-preview iframe{
   height: 34rem;
+}
+.editor-preview-side h1, .editor-preview h1 {
+  padding-bottom: 6px;
+  border-bottom: 1px solid #EEE;
+  margin-bottom: 30px;
+}
+.editor-preview-side ul, .editor-preview ul {
+  padding-left: 1.5rem;
 }
 .CodeMirror .cm-spell-error:not(.cm-url):not(.cm-comment):not(.cm-tag):not(.cm-word) {
   background: #fff !important;

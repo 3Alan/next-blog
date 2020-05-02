@@ -47,9 +47,14 @@ module.exports = appInfo => {
     csrf: { enable: false },
     domainWhiteList: [ 'http://localhost:3000' ],
   };
+
   config.cors = {
     credentials: true, // 开启认证
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
+  };
+
+  config.jwt = {
+    secret: 'jwpxnsi1kjskdo323klsjfjxi-',
   };
 
   return {
