@@ -18,6 +18,10 @@ module.exports = appInfo => {
   // add your middleware config here
   config.middleware = [];
 
+  config.jwt = {
+    secret: 'jwpxnsi1kjskdo323klsjfjxi-',
+  };
+
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
@@ -45,16 +49,12 @@ module.exports = appInfo => {
 
   config.security = {
     csrf: { enable: false },
-    domainWhiteList: [ 'http://localhost:3000' ],
+    domainWhiteList: [ 'http://localhost:3000', 'http://localhost:3001' ],
   };
 
   config.cors = {
     credentials: true, // 开启认证
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
-  };
-
-  config.jwt = {
-    secret: 'jwpxnsi1kjskdo323klsjfjxi-',
   };
 
   return {

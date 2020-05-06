@@ -1,0 +1,29 @@
+.green-btn {
+  background: #52c41a;
+  border-color: #52c41a;
+}
+.green-btn:hover {
+  background: #52c41a;
+  border-color: #52c41a;
+  opacity: 0.8;
+}
+.green-btn:focus {
+  background: #52c41a !important;
+  border-color: #52c41a !important;
+  opacity: 0.8;
+}
+
+.orange-btn {
+  background: #faad14;
+  border-color: #faad14;
+}
+.orange-btn:hover {
+  background: #faad14;
+  border-color: #faad14;
+  opacity: 0.8;
+}
+.orange-btn:focus {
+  background: #faad14 !important;
+  border-color: #faad14 !important;
+  opacity: 0.8;
+}

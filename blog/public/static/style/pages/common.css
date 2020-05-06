@@ -9,6 +9,7 @@ body {
   background: #fff;
   border-radius: .3rem;
   padding: 0.3rem;
+  box-shadow: 0 2px 10px 0 rgba(18, 141, 244, 0.08)
 }
 .left-container .list-item {
   padding: 0.9rem;
@@ -29,6 +30,10 @@ body {
 }
 .article-list-header {
   padding: 0 0.6rem;
+}
+.ant-back-top {
+  right: 1rem !important;
+  bottom: 1rem !important;
 }
 @media (max-width: 576px) {
   .list-image {

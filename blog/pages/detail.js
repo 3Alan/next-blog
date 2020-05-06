@@ -7,7 +7,7 @@ import Axios from 'axios';
 import Api from '../utils/api';
 import { useState, useEffect } from 'react';
 import { Row, Col, Breadcrumb, Affix, BackTop } from 'antd';
-import { EyeOutlined, CalendarOutlined } from '@ant-design/icons';
+import { EyeOutlined, CalendarOutlined, UpOutlined } from '@ant-design/icons';
 import marked from 'marked';
 import hl from 'highlight.js';
 import Tocify from '../components/tocify.tsx';
@@ -91,7 +91,7 @@ const Detail = (props) => {
           </Affix>
         </Col>
       </Row>
-      <BackTop style={{height: 80, width: 40, background: '#CCC'}}>up</BackTop>
+      <BackTop><div className={detail.backtop}><UpOutlined /></div></BackTop>
       <Footer />
     </div>
   );

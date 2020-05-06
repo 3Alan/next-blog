@@ -14,14 +14,26 @@
 .content-card {
   position: relative;
   color: #fff;
+  height: 200px;
   cursor: pointer;
-  height: 12rem;
 }
 .content-card-mask {
   width: 100%;
   height: 100%;
   overflow: hidden;
   border-radius: 0.3rem;
+}
+.content-card-mask div {
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s ease-in-out;
+  background-size: auto 100%;
+  background-repeat: no-repeat cover;
+  background-position-x: center;
+}
+.content-card-mask div:hover {
+  opacity: 0.9;
+  transform: scale(1.5);
 }
 .content-card-text {
   position: absolute;
@@ -34,15 +46,6 @@
 }
 .content-card-text-time {
   margin-left: 1rem;
-}
-.content-card img{
-  width: 100%;
-  height: 100%;
-  transition: all 0.5s ease-in-out;
-}
-.content-card img:hover{
-  opacity: 0.9;
-  transform: scale(1.5);
 }
 @media (max-width: 576px) {
   .content {

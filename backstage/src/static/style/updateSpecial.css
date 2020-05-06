@@ -1,0 +1,41 @@
+.special-tag {
+  margin-bottom: 20px;
+}
+.bottom-btn {
+  width: 100%;
+  text-align: right;
+  margin-top: 20px;
+}
+.img-container {
+  width: 400px;
+  height: 168px;
+  overflow: hidden;
+  border-radius: 0.3rem;
+  border: 1px dashed #6ab4f8;
+}
+.img-container div {
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s ease-in-out;
+  background-size: auto 100%;
+  background-repeat: no-repeat cover;
+  background-position-x: center;
+}
+.img-container div:hover {
+  cursor: pointer;
+  opacity: 0.9;
+  transform: scale(1.5);
+}
+.img-container-text {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  color: #FFF;
+}
+.img-container-text-name {
+  font-size: 1.3rem;
+  display: block;
+}
+.img-container-text-time {
+  margin-left: 1rem;
+}

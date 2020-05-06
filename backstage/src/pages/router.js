@@ -7,7 +7,7 @@ function Main() {
   return (
     <Router>
       <Route path="/login" component={Login} exact />
-      <Route path="/index" component={Index} />
+      <Route path="/backstage" component={Index} />
     </Router>
   )
 }

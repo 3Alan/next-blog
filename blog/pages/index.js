@@ -17,7 +17,11 @@ const Home = (props) => {
   const { Paragraph } = Typography;
   const [color, setColor] = useState('red');
   const [articleList, setArticleList] = useState(props.data);
-  const hasImg = true;
+
+  useEffect(() => {
+    console.log(props);
+    
+  },[])
 
   const IconText = ({ icon, text }) => (
     <span>
@@ -42,7 +46,7 @@ const Home = (props) => {
   return (
     <div>
       <Head>
-        <title>首页|Alan</title>
+        <title>首页|Alan-前端博客</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
@@ -78,16 +82,16 @@ const Home = (props) => {
                     />,
                     <Link
                     href={`/collection?id=${item.typeId}`}
-                  ><Tag color="green">vue</Tag></Link>
+                  ><Tag color="green" style={{cursor: 'pointer'}}>{item.typeName}</Tag></Link>
                     
                   ]}
                   extra={
-                    hasImg ? (
+                    !!item.img ? (
                       <img
                         className="list-image"
                         width={272}
                         alt="logo"
-                        src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+                        src={item.img}
                       />
                     ) : (
                       ''

@@ -54,7 +54,7 @@ const Collections = (props) => {
             <Breadcrumb.Item>
               <a href="/">首页</a>
             </Breadcrumb.Item>
-            <Breadcrumb.Item>主题</Breadcrumb.Item>
+            <Breadcrumb.Item>专题</Breadcrumb.Item>
           </Breadcrumb>
           <div style={{ overflow: 'hidden' }}>
             <Row className={collections.content} gutter={[16, 16]}>
@@ -72,7 +72,7 @@ const Collections = (props) => {
                     xl={12}
                   >
                     <div className={collections['content-card-mask']}>
-                      <img src={item.img}></img>
+                      <div style={{backgroundImage: `url('https://icapps.com/sites/default/files/styles/wide_image/public/React%20Native%20image.jpg?itok=v9IZyGx9')`}}></div>
                     </div>
                     <div className={collections['content-card-text']}>
                       <span className={collections['content-card-text-name']}>
