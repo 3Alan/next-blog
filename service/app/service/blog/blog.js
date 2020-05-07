@@ -10,7 +10,7 @@ class BlogService extends Service {
 
   async getArticleById(id) {
     const articleDetail = await this.app.mysql.query('select article.id,article.title,article.introduction,article.article_content as content,FROM_UNIXTIME(article.release_time,"%Y-%m-%d %H:%i:%s") as releaseTime,article.view_count as viewCount ,article_type.type_name as typeName FROM article LEFT JOIN article_type ON article.type_id = article_type.id where article.id=?', [ id ]);
-    return articleDetail;
+    return articleDetail[0];
   }
 
   async getCollectionById(id) {

@@ -12,9 +12,9 @@ class HomeController extends Controller {
 
   async getArticleById() {
     const { id } = this.ctx.params;
-    const results = await this.ctx.service.blog.blog.getArticleById(id);
+    const articleDetail = await this.ctx.service.blog.blog.getArticleById(id);
     this.ctx.body = {
-      data: results,
+      articleDetail,
     };
   }
 

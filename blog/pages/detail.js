@@ -17,7 +17,7 @@ const Detail = (props) => {
     console.log(props);
   });
 
-  const [articleDetail] = useState(props);
+  const [articleDetail] = useState(props.articleDetail);
 
   const tocify = new Tocify();
   const renderer = new marked.Renderer();
@@ -40,9 +40,6 @@ const Detail = (props) => {
       return hl.highlightAuto(code).value;
     },
   });
-
-  // 将markdown内容转化成html代码
-  let content = marked(articleDetail.content);
 
   return (
     <div className={detail.detail}>
@@ -76,7 +73,7 @@ const Detail = (props) => {
           </div>
           <div
             className={detail['detail-content']}
-            dangerouslySetInnerHTML={{ __html: content }}
+            dangerouslySetInnerHTML={{ __html: marked(articleDetail.content) }}
           ></div>
         </Col>
         <Col className="right-container" xs={0} sm={0} md={7} lg={6} xl={4}>
@@ -100,7 +97,7 @@ const Detail = (props) => {
 Detail.getInitialProps = async (ctx) => {
   const { id } = ctx.query;
   const res = await Axios(Api.getArticleDetail(id));
-  return res.data.data[0];
+  return res.data;
 };
 
 export default Detail;
