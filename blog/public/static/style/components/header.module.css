@@ -2,20 +2,39 @@
   background-color: var(--white-color);
   padding: .4rem;
   height: 2.6rem;
-  border-bottom: 1px solid #ccc;
+  box-shadow: 0 2px 8px rgba(18, 141, 244, 0.08);;
   box-sizing: content-box;
   overflow: hidden;
 }
 .title {
   line-height: 3rem;
 }
+.author-name {
+  font-size: 1.5rem;
+  color: #1890ff;
+  position: relative;
+  padding-right: 10px;
+}
+.author-name::after {
+  position: absolute;
+  content: '';
+  background: #6ab4f8;
+  width: 1px;
+  height: 100%;
+  top: 0;
+  right: 0px;
+}
+.author-description {
+  padding-left: 5px;
+  font-size: 0.6em;
+}
 @media (max-width: 768px) {
   .show-menu {
     font-size: 1.2rem;
     display: block !important;
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 10px;
+    bottom: 0;
     line-height: 3rem;
   }
 }

@@ -11,7 +11,6 @@ module.exports = options => {
         console.log(decode);
         await next();
       } catch (error) {
-        console.log(error.name);
         if (error.name === 'JsonWebTokenError' || error.name === 'TokenExpiredError') {
           // 这里的错误有许多种情况：1.token错误，2.token过期... 这里统一处理为鉴权失败
           ctx.body = {

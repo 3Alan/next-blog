@@ -3,7 +3,17 @@ import marked from 'marked';
 import hl from 'highlight.js';
 import '../static/style/updateArticle.css';
 import 'highlight.js/styles/atom-one-dark.css';
-import { Row, Select, Col, Input, Button, Spin, Upload, message } from 'antd';
+import {
+  Row,
+  Select,
+  Col,
+  Input,
+  Button,
+  Spin,
+  Upload,
+  message,
+  Switch,
+} from 'antd';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import Api from '../utils/api';
 import Axios from '../utils/axios';
@@ -22,6 +32,7 @@ function UpdateArticle(props) {
   const [introduction, setIntroduction] = useState('');
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
+  const [isPin, setIsPin] = useState(false);
   const [uploadLoading, setUploadLoading] = useState(false);
   const [showSaveBtn, setShowSaveBtn] = useState('block');
   const [simplemde, setSimplemde] = useState(null);
@@ -91,19 +102,25 @@ function UpdateArticle(props) {
       url: Api.getArticleDetail(id),
     })
       .then((res) => {
-        const { title, introduction, typeId, content, img } = res.data.articleDetail;
+        const {
+          title,
+          introduction,
+          typeId,
+          content,
+          img,
+          isPin,
+        } = res.data.articleDetail;
         setTitle(title);
         setIntroduction(introduction);
         setType(typeId);
         setImageUrl(img);
+        setIsPin(isPin);
         if (simplemde) {
           simplemde.value(content);
         }
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
-
         setLoading(false);
         message.error('服务器开小差了');
       });
@@ -127,6 +144,7 @@ function UpdateArticle(props) {
       img: imageUrl,
       type_id: type,
       introduction,
+      is_pin: isPin,
       article_content: simplemde.value(),
     };
     // 有id时传递，没有时不传递
@@ -162,6 +180,7 @@ function UpdateArticle(props) {
       img: imageUrl,
       type_id: type,
       introduction,
+      is_pin: isPin,
       article_content: simplemde.value(),
     };
     // 有id时传递，没有时不传递
@@ -260,8 +279,12 @@ function UpdateArticle(props) {
                 );
               })}
             </Select>
+            <div className="switch-pin-container">
+              <span>是否顶置</span>
+              <Switch className="switchPin" defaultChecked={false} checked={isPin} onChange={e => setIsPin(e)}/>
+            </div>
+
             <div className="button-container">
-              {' '}
               <Button
                 className="save-btn"
                 onClick={save}

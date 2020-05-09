@@ -1,22 +1,70 @@
-import author from "../public/static/style/components/author.module.css";
-import { Avatar, Divider } from "antd";
-import { GithubOutlined, QqOutlined } from "@ant-design/icons";
+import author from '../public/static/style/components/author.module.css';
+import { Avatar, Divider, Tag, Tooltip } from 'antd';
+import {
+  GithubFilled,
+  QqOutlined,
+  DribbbleSquareOutlined,
+  WechatOutlined,
+} from '@ant-design/icons';
 
 const Author = () => {
+  const num = 981;
   return (
     <div className={author.container}>
       <Avatar
         size={100}
-        src="https://avatars3.githubusercontent.com/u/49978973?s=460&u=ff52a0c7a943dff2d87956ccc3321e2c95ab2d61&v=4"
+        src="https://gitee.com/alannum3/MyImages/raw/master/img/20200508165134.png"
       />
       <div className={author.name}>Alan</div>
-      <span className={author.description}>
-        精通是的卡就发了大水解放拉萨尽量克服
-      </span>
+      <div className={author.introduction}>
+        <DribbbleSquareOutlined
+          style={{ color: '#fbb933', fontSize: '1.5rem' }}
+        />
+        <Tag color="blue">NBA</Tag>
+        <Tag color="purple">coder</Tag>
+        <Tag color="gold">吃鸡</Tag>
+        <Tag color="red">跑步</Tag>
+        <Tag color="red">已发布文章{num}篇</Tag>
+      </div>
       <Divider>Account</Divider>
       <div>
-        <Avatar size={28} icon={<GithubOutlined />} className={author.account} />
-        <Avatar size={28} icon={<QqOutlined />} className={author.account} />
+        <a href="https://github.com/3Alan" target="_blank">
+          <Tooltip title="欢迎查看">
+            <Avatar
+              size={28}
+              icon={<GithubFilled style={{ fontSize: 28, color: '#000' }} />}
+              className={author.account}
+              style={{ background: '#fff' }}
+            />
+          </Tooltip>
+        </a>
+
+        <a href="tencent://message/?uin=1540703192" target="_blank">
+          <Tooltip title="点击添加">
+            <Avatar
+              size={28}
+              icon={<QqOutlined style={{ fontSize: 22, color: '#fff' }} />}
+              className={author.account}
+              style={{ background: '#40a9ff' }}
+            />
+          </Tooltip>
+        </a>
+
+        <Tooltip
+          title={
+            <img
+              src="https://gitee.com/alannum3/MyImages/raw/master/img/20200508213145.png"
+              style={{ width: 80 }}
+            />
+          }
+        >
+          <Avatar
+            size={28}
+            icon={<WechatOutlined style={{ fontSize: 22, color: '#fff' }} />}
+            className={author.account}
+            style={{ background: '#87dc4b', cursor: 'pointer' }}
+          />
+        </Tooltip>
       </div>
     </div>
   );

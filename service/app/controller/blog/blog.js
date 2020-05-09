@@ -10,6 +10,13 @@ class HomeController extends Controller {
     };
   }
 
+  async getSpecialList() {
+    const results = await this.ctx.service.blog.blog.getSpecialList();
+    this.ctx.body = {
+      data: results,
+    };
+  }
+
   async getArticleById() {
     const { id } = this.ctx.params;
     const articleDetail = await this.ctx.service.blog.blog.getArticleById(id);
@@ -21,7 +28,13 @@ class HomeController extends Controller {
   async getCollectionById() {
     const { id } = this.ctx.params;
     const results = await this.ctx.service.blog.blog.getCollectionById(id);
+    this.ctx.body = {
+      data: results,
+    };
+  }
 
+  async getArchive() {
+    const results = await this.ctx.service.blog.blog.getArchive();
     this.ctx.body = {
       data: results,
     };

@@ -1,70 +1,58 @@
-import React, { useState, useEffect } from 'react';
-import { Row, Col, Menu, Affix } from 'antd';
+import React, { useState } from 'react';
+import { Row, Col, Menu, Affix, Drawer } from 'antd';
 import header from '../public/static/style/components/header.module.css';
-import { HomeOutlined, ProfileOutlined, MenuOutlined } from '@ant-design/icons';
+import {
+  HomeOutlined,
+  ProfileOutlined,
+  MenuOutlined,
+  FolderOutlined,
+} from '@ant-design/icons';
 import Link from 'next/link';
 
-const { SubMenu } = Menu;
-
 const Header = (props) => {
-  const [selectedItem, setSelectedItem] = useState('home');
+  const [showDrawer, setShowDrawer] = useState(false);
 
-  function toggleMenu(e) {
-    const { key } = e;
-    setSelectedItem(key);
+  function onClose() {
+    setShowDrawer(false);
   }
+
+  function showLeftMenu() {
+    setShowDrawer(true);
+  }
+
   return (
     <Affix offsetTop={0}>
       <div className={header.header}>
         <Row type="flex" justify="center" gutter={16}>
           <Col xs={23} sm={23} md={14} lg={15} xl={13}>
             <div className={header.title}>
-              <span>Alan</span>
-              <span>专注于前端开发</span>
+              <Link href="/">
+                <a>
+                  <span className={header['author-name']}>Alan</span>
+                </a>
+              </Link>
+              <span className={header['author-description']}>
+                此刻想举重若轻，之前必要负重前行。
+              </span>
             </div>
 
             {/* 移动端适配 */}
-            <Menu
-              mode="horizontal"
+
+            <MenuOutlined
               style={{ display: 'none' }}
               className={header['show-menu']}
-              selectedKeys="home"
-            >
-              <SubMenu
-                title={
-                  <>
-                    <MenuOutlined />
-                  </>
-                }
-              >
-                <Menu.Item key="home">
-                  <Link href="/">
-                    <a>
-                      <HomeOutlined />
-                      首页
-                    </a>
-                  </Link>
-                </Menu.Item>
-
-                <Menu.Item key="life">
-                  <ProfileOutlined />
-                  专题
-                </Menu.Item>
-                <Menu.Item key="life">
-                  <ProfileOutlined />
-                  生活记录
-                </Menu.Item>
-              </SubMenu>
-            </Menu>
+              onClick={showLeftMenu}
+            />
           </Col>
 
-          {/* 正常适配 */}
-          <Col xs={0} sm={0} md={9} lg={8} xl={6}>
-            <Menu
-              mode="horizontal"
-              selectedKeys={selectedItem}
-              onClick={toggleMenu}
-            >
+          <Drawer
+            title="菜单"
+            placement="right"
+            closable={false}
+            onClose={onClose}
+            visible={showDrawer}
+          >
+            <Menu mode="inline" style={{width: '100%'}}>
               <Menu.Item key="home">
                 <Link href="/">
                   <a>
@@ -82,11 +70,42 @@ const Header = (props) => {
                   </a>
                 </Link>
               </Menu.Item>
-              <Menu.Item key="life">
+              <Menu.Item key="archive">
+                <Link href="/archive">
+                  <a>
+                    <FolderOutlined />
+                    归档
+                  </a>
+                </Link>
+              </Menu.Item>
+            </Menu>
+          </Drawer>
+
+          {/* 正常适配 */}
+          <Col xs={0} sm={0} md={9} lg={8} xl={6}>
+            <Menu mode="horizontal">
+              <Menu.Item key="home">
+                <Link href="/">
+                  <a>
+                    <HomeOutlined />
+                    首页
+                  </a>
+                </Link>
+              </Menu.Item>
+
+              <Menu.Item key="collections">
                 <Link href="/collections">
                   <a>
                     <ProfileOutlined />
-                    生活记录
+                    专题
+                  </a>
+                </Link>
+              </Menu.Item>
+              <Menu.Item key="archive">
+                <Link href="/archive">
+                  <a>
+                    <FolderOutlined />
+                    归档
                   </a>
                 </Link>
               </Menu.Item>

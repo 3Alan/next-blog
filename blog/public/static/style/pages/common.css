@@ -5,20 +5,26 @@ body {
 .container {
   margin-top: 1.5rem;
 }
-.left-container{
+.content-container {
+  padding: 0.5rem;
   background: #fff;
   border-radius: .3rem;
-  padding: 0.3rem;
-  box-shadow: 0 2px 10px 0 rgba(18, 141, 244, 0.08)
+  box-shadow: 0 2px 10px 0 rgba(18, 141, 244, 0.08);
 }
 .left-container .list-item {
   padding: 0.9rem;
   transition: all 0.4s ease-in-out;
 }
 .left-container .list-item:hover {
-  background: rgb(0, 0, 255, 0.1);
+  background: rgba(230, 247, 255, 0.4);
   cursor: default;
   transform: scale(1.01);
+}
+.article-container {
+  background: #fff;
+  border-radius: .3rem;
+  padding: 0.3rem;
+  box-shadow: 0 2px 10px 0 rgba(18, 141, 244, 0.08);
 }
 .right-container {
   margin-left: 1rem;
@@ -26,14 +32,54 @@ body {
 }
 .ant-list-item-meta-title a {
   font-size: 1.3rem !important;
-  color: blue !important;
+  color: #40a9ff !important;
 }
 .article-list-header {
   padding: 0 0.6rem;
 }
+.ant-tabs-nav-wrap {
+  padding-left: 5px;
+}
 .ant-back-top {
   right: 1rem !important;
   bottom: 1rem !important;
+}
+.ant-menu-item, .ant-menu-horizontal {
+  border: none !important;
+}
+.backtop {
+  background: #fff;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px  #ccc;
+}
+.ant-drawer-body {
+  padding: 0;
+}
+/* 滚动条 */
+::-webkit-scrollbar{
+  width:6px;
+  height:6px;
+}
+/* 滚动轨道 */
+::-webkit-scrollbar-track{
+  background: #fff;
+  border-radius:2px;
+}
+/* 滑块 */
+::-webkit-scrollbar-thumb{
+  background: #40a9ff;
+  border-radius:4px;
+}
+::-webkit-scrollbar-thumb:hover{
+  background: #096dd9;
+}
+::-webkit-scrollbar-corner{
+  background: #fff;
 }
 @media (max-width: 576px) {
   .list-image {

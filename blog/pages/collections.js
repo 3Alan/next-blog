@@ -5,35 +5,12 @@ import Author from '../components/author';
 import Footer from '../components/footer';
 import Axios from 'axios';
 import Api from '../utils/api';
-import { useState, useEffect } from 'react';
-import { Row, Col, Breadcrumb, Affix } from 'antd';
-import { EyeOutlined, CalendarOutlined } from '@ant-design/icons';
+import { useState } from 'react';
+import { Row, Col, Breadcrumb } from 'antd';
 import Link from 'next/link';
 
 const Collections = (props) => {
-  const collectionList = [
-    {
-      id: 1,
-      img:
-        'https://ae01.alicdn.com/kf/HTB1eE2mXPlxYKJjSZFuq6yYlVXay/Laeacco-Seaside-Wooden-View-Bridge-Platform-Scenic-Photography-Backgrounds-Vinyl-Custom-Photographic-Backdrops-For-Photo-Studio.jpg_640x640.jpg',
-      collectionName: 'vue专题',
-      articleNum: 10,
-    },
-    {
-      id: 2,
-      img:
-        'https://ae01.alicdn.com/kf/HTB1eE2mXPlxYKJjSZFuq6yYlVXay/Laeacco-Seaside-Wooden-View-Bridge-Platform-Scenic-Photography-Backgrounds-Vinyl-Custom-Photographic-Backdrops-For-Photo-Studio.jpg_640x640.jpg',
-      collectionName: 'react专题',
-      articleNum: 15,
-    },
-    {
-      id: 3,
-      img:
-        'https://ae01.alicdn.com/kf/HTB1eE2mXPlxYKJjSZFuq6yYlVXay/Laeacco-Seaside-Wooden-View-Bridge-Platform-Scenic-Photography-Backgrounds-Vinyl-Custom-Photographic-Backdrops-For-Photo-Studio.jpg_640x640.jpg',
-      collectionName: 'javascript专题',
-      articleNum: 40,
-    },
-  ];
+  const [collectionList] = useState(props.data);
 
   return (
     <div>
@@ -43,7 +20,7 @@ const Collections = (props) => {
       <Header />
       <Row justify="center" type="flex" className="container">
         <Col
-          className={`left-container ${collections.container}`}
+          className="content-container"
           xs={23}
           sm={23}
           md={16}
@@ -72,15 +49,15 @@ const Collections = (props) => {
                     xl={12}
                   >
                     <div className={collections['content-card-mask']}>
-                      <div style={{backgroundImage: `url('https://icapps.com/sites/default/files/styles/wide_image/public/React%20Native%20image.jpg?itok=v9IZyGx9')`}}></div>
+                      <div style={{backgroundImage: `url(${item.image})`}}></div>
                     </div>
                     <div className={collections['content-card-text']}>
                       <span className={collections['content-card-text-name']}>
-                        {item.collectionName}
+                        {item.name}
                       </span>
-                      <span>{item.articleNum}篇文章</span>
+                      <span>{item.num || 0}篇文章</span>
                       <span className={collections['content-card-text-time']}>
-                        最新更新时间：2020-04-30
+                        最新更新时间：{item.time || '暂无文章'}
                       </span>
                     </div>
                   </Col>
@@ -96,6 +73,11 @@ const Collections = (props) => {
       <Footer />
     </div>
   );
+};
+
+Collections.getInitialProps = async () => {
+  const res = await Axios(Api.getSpecialList());
+  return res.data;
 };
 
 export default Collections;

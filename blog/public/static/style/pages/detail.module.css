@@ -1,9 +1,12 @@
 .container {
   padding: 0.5rem;
+  background: #fff;
+  border-radius: .3rem;
+  box-shadow: 0 2px 10px 0 rgba(18, 141, 244, 0.08);
 }
 .breadcrumb {
   background: #e1f0ff;
-  padding: 0.5rem;
+  padding: 10px;
   border-radius: 5px;
 }
 .detail-title {
@@ -11,9 +14,17 @@
   text-align: center;
   margin-top: 1rem;
 }
-.detail-data-icon {
-  margin: 0 0.5rem;
+.detail-data-icon-special {
+  margin: 0.5rem 0.5rem;
+  color: #ffc53d;
+}
+.detail-data-icon-view {
+  margin: 0.5rem 0.5rem;
   color: #ccc;
+}
+.detail-data-icon-time {
+  margin: 0.5rem 0.5rem;
+  color: #6ab4f8;
 }
 .detail-content{
   padding: 1.5rem;
@@ -26,11 +37,15 @@
   border-radius: 0.3rem;
 }
 .detail-outline-header {
+  color: #6ab4f8;
   padding: 0.3rem;
   border-bottom: 1px solid #f0f0f0;
 }
 .detail-outline-content {
   padding: 0.8rem 0.3rem;
+}
+.detail-content, .detail-title {
+  word-break: break-all;
 }
 .detail-content img {
   padding: 0 1%;
@@ -101,16 +116,6 @@
 }
 .detail iframe {
   height: 34rem;
-}
-.backtop {
-  background: #fff;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  box-shadow: 0 2px 2px  #ccc;
 }
 .backtop:hover {
   background: #EEE;

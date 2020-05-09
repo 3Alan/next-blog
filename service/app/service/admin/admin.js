@@ -24,12 +24,16 @@ class AdminService extends Service {
     return result;
   }
   async getArticleList() {
-    const articleList = await this.app.mysql.query('select article.id,article.status,article.title,article.introduction,FROM_UNIXTIME(article.release_time,"%Y-%m-%d %H:%i:%s") as releaseTime,FROM_UNIXTIME(article.update_time,"%Y-%m-%d %H:%i:%s") as updateTime,article.view_count as viewCount ,article_type.type_name as typeName FROM article LEFT JOIN article_type ON article.type_id = article_type.id order by article.release_time desc, article.update_time desc');
+    const articleList = await this.app.mysql.query('select article.id,article.is_pin as isPin,article.status,article.title,article.introduction,FROM_UNIXTIME(article.release_time,"%Y-%m-%d %H:%i:%s") as releaseTime,FROM_UNIXTIME(article.update_time,"%Y-%m-%d %H:%i:%s") as updateTime,article.view_count as viewCount ,article_type.type_name as typeName FROM article LEFT JOIN article_type ON article.type_id = article_type.id order by article.release_time desc, article.update_time desc');
     return articleList;
   }
 
+  async saveArchive(content) {
+    await this.app.mysql.insert('archive', content);
+  }
+
   async getArticleDetail(id) {
-    const articleDetail = await this.app.mysql.query('select article.id,article.img,article.title,article.introduction,article.article_content as content,FROM_UNIXTIME(article.release_time,"%Y-%m-%d %H:%i:%s") as releaseTime,article.view_count as viewCount ,article_type.id as typeId FROM article LEFT JOIN article_type ON article.type_id = article_type.id where article.id=?', [ id ]);
+    const articleDetail = await this.app.mysql.query('select article.id,article.is_pin as isPin,article.img,article.title,article.introduction,article.article_content as content,FROM_UNIXTIME(article.release_time,"%Y-%m-%d %H:%i:%s") as releaseTime,article.view_count as viewCount ,article_type.id as typeId FROM article LEFT JOIN article_type ON article.type_id = article_type.id where article.id=?', [ id ]);
     return articleDetail[0];
   }
 

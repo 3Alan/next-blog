@@ -58,21 +58,22 @@ class AdminController extends Controller {
     if (articleContent.id) {
       // 保存了文章但是没有发布
       const isRelease = await admin.isRelease(articleContent.id);
-      console.log(isRelease);
-      
       if (isRelease) {
         results = await admin.updateArticle({ update_time: time, status: 1, ...articleContent });
       } else {
-        results = await admin.updateArticle({ release_time: time, status: 1, ...articleContent });
+        // 添加存档
+        await admin.saveArchive({ content: articleContent.title, time, type: 'article' });
+        results = await admin.updateArticle({ release_time: time, update_time: time, status: 1, ...articleContent });
       }
-      
       this.ctx.body = {
         result: results.affectedRows === 1 ? 'success' : 'fail',
       };
     } else {
       // 第一次发布时
-      const release_time = (new Date().getTime() / 1000).toString();
-      results = await admin.addArticle({ release_time, status: 1, ...articleContent });
+      const time = (new Date().getTime() / 1000).toString();
+      // 添加存档
+      await admin.saveArchive({ content: articleContent.title, time, type: 'article' });
+      results = await admin.addArticle({ release_time: time, update_time: time, status: 1, ...articleContent });
       this.ctx.body = {
         result: results.affectedRows === 1 ? 'success' : 'fail',
         id: results.insertId,
@@ -105,7 +106,11 @@ class AdminController extends Controller {
 
   async addSpecial() {
     const specialContent = this.ctx.request.body;
-    const result = await this.ctx.service.admin.admin.addSpecial(specialContent);
+    const { admin } = this.ctx.service.admin;
+    // 添加存档
+    const time = (new Date().getTime() / 1000).toString();
+    await admin.saveArchive({ content: specialContent.type_name, time, type: 'special' });
+    const result = await admin.addSpecial(specialContent);
     this.ctx.body = {
       result: result ? 'success' : 'fail',
     };

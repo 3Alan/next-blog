@@ -3,7 +3,7 @@ import { Table, Tag, Button, message, Modal, notification } from 'antd';
 import Api from '../utils/api';
 import Axios from '../utils/axios';
 import '../static/style/articleList.css';
-import { ExclamationCircleOutlined } from '@ant-design/icons';
+import { ExclamationCircleOutlined, PushpinOutlined } from '@ant-design/icons';
 
 const { Column } = Table;
 const { confirm } = Modal;
@@ -76,7 +76,9 @@ function ArticleList(props) {
       dataSource={articleList}
       pagination={{ pageSize: 6, position: ['bottomCenter'] }}
     >
-      <Column title="标题" dataIndex="title" key="title" width={280} />
+      <Column title="标题" dataIndex="title" key="title" width={280} render={(title, columnItem) => (
+        columnItem.isPin ? <span><Tag color="red"><PushpinOutlined />顶置</Tag>{title}</span> : <span>{title}</span>
+      )}/>
       <Column
         title="专题"
         dataIndex="typeName"
