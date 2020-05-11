@@ -41,6 +41,7 @@ const Home = (props) => {
                 articleList={pinedArticleList}
                 showHeader={true}
                 showPin={true}
+                showTag= {true}
               />
             </div>
 

@@ -44,6 +44,9 @@
 .detail-outline-content {
   padding: 0.8rem 0.3rem;
 }
+.detail-outline-content-mb {
+  padding: 0.8rem;
+}
 .detail-content, .detail-title {
   word-break: break-all;
 }
@@ -53,7 +56,7 @@
 }
 .detail-content blockquote {
   padding: 20px;
-  background: #ebf3fa;
+  background: rgba(235, 243, 250, 0.5);
   position: relative;
   border-radius: 2px;
   color: #888;
@@ -92,14 +95,37 @@
   font-size: 0.9rem;
 }
 .detail h2 {
-  padding-bottom: 6px;
-  border-bottom: 1px solid #EEE;
+  padding-left: 10px;
   margin-bottom: 20px;
   font-size: 20px;
   font-weight: bold;
+  position: relative;
+}
+.detail h2::before {
+  position: absolute;
+  content: '';
+  width: 4px;
+  height: 80%;
+  left: 0;
+  top: 10%;
+  background: #40a9ff;
 }
 .detail h3 {
-  font-size: 18px;
+  font-size: 16px;
+  margin-top: 10px;
+  position: relative;
+  padding-left: 15px;
+  font-weight: bold;
+}
+.detail h3::before {
+  position: absolute;
+  content: '';
+  width: 6px;
+  height: 24%;
+  border-radius: 100px;
+  left: 0;
+  top: 38%;
+  background: #40a9ff;
 }
 .detail ul, .detail ol {
   padding-left: 1rem;
@@ -109,16 +135,36 @@
   background-color:#f3f3f3;
   border-radius:3px;
   font-size: 12px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color:#1890ff;
+  padding: 2px 5px;
+  color:#096dd9;
   margin: 0px 3px;
 }
 .detail iframe {
   height: 34rem;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
-.backtop:hover {
-  background: #EEE;
+@media (max-width: 768px) {
+  .detail-outline-btn {
+    display: block !important;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #fff;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px  #ccc;
+  }
+  .detail-outline-btn:hover {
+    cursor: pointer;
+    background: #EEE;
+  }
 }
 @media (max-width: 576px) {
   .detail-content{

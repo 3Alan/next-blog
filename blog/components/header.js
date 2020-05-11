@@ -27,7 +27,7 @@ const Header = (props) => {
           <Col xs={23} sm={23} md={14} lg={15} xl={13}>
             <div className={header.title}>
               <Link href="/">
-                <a>
+                <a className="hvr-buzz-out">
                   <span className={header['author-name']}>Alan</span>
                 </a>
               </Link>
@@ -46,7 +46,7 @@ const Header = (props) => {
           </Col>
 
           <Drawer
-            title="菜单"
+            title="Alan"
             placement="right"
             closable={false}
             onClose={onClose}

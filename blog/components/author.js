@@ -14,11 +14,13 @@ const Author = () => {
       <Avatar
         size={100}
         src="https://gitee.com/alannum3/MyImages/raw/master/img/20200508165134.png"
+        className="hvr-float-shadow"
       />
       <div className={author.name}>Alan</div>
       <div className={author.introduction}>
         <DribbbleSquareOutlined
           style={{ color: '#fbb933', fontSize: '1.5rem' }}
+          className="hvr-wobble-vertical"
         />
         <Tag color="blue">NBA</Tag>
         <Tag color="purple">coder</Tag>

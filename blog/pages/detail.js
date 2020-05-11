@@ -7,7 +7,7 @@ import Axios from 'axios';
 import Api from '../utils/api';
 import { useState } from 'react';
 import { withRouter } from 'next/router';
-import { Row, Col, Breadcrumb, Affix, BackTop } from 'antd';
+import { Row, Col, Breadcrumb, Affix, BackTop, Drawer } from 'antd';
 import {
   EyeOutlined,
   CalendarOutlined,
@@ -24,6 +24,15 @@ import Link from 'next/link';
 
 const Detail = (props) => {
   const [articleDetail] = useState(props.articleDetail);
+  const [showDrawer, setShowDrawer] = useState(false);
+
+  function onClose() {
+    setShowDrawer(false);
+  }
+
+  function showDetailOutline() {
+    setShowDrawer(true);
+  }
 
   const tocify = new Tocify();
   const renderer = new marked.Renderer();
@@ -42,6 +51,7 @@ const Detail = (props) => {
     tables: true,
     breaks: false,
     smartLists: true,
+    smartypants: false,
     highlight: function (code) {
       return hl.highlightAuto(code).value;
     },
@@ -55,6 +65,7 @@ const Detail = (props) => {
     <div className={detail.detail}>
       <Head>
         <title>{articleDetail.title}</title>
+        <base target="_blank" />
       </Head>
       <Header />
       <Row justify="center" type="flex" className="container">
@@ -68,7 +79,10 @@ const Detail = (props) => {
         >
           <Breadcrumb className={detail.breadcrumb}>
             <Breadcrumb.Item onClick={backPage}>
-              <a><LeftOutlined />返回</a>
+              <a>
+                <LeftOutlined />
+                返回
+              </a>
             </Breadcrumb.Item>
             <Breadcrumb.Item>{articleDetail.title}</Breadcrumb.Item>
           </Breadcrumb>
@@ -93,8 +107,10 @@ const Detail = (props) => {
             </span>
           </div>
           <div
-            className={detail['detail-content']}
-            dangerouslySetInnerHTML={{ __html: marked(articleDetail.content) }}
+            className={`detail-content ${detail['detail-content']}`}
+            dangerouslySetInnerHTML={{
+              __html: marked(articleDetail.content),
+            }}
           ></div>
         </Col>
         <Col className="right-container" xs={0} sm={0} md={7} lg={6} xl={4}>
@@ -118,6 +134,26 @@ const Detail = (props) => {
         </div>
       </BackTop>
       <Footer />
+      <div
+        className={`${detail['detail-outline-btn']}`}
+        style={{ display: 'none' }}
+        onClick={showDetailOutline}
+      >
+        <BookTwoTone />
+      </div>
+      {/* 小屏幕下的文章大纲 */}
+      <Drawer
+        title={articleDetail.title}
+        placement="right"
+        closable={false}
+        onClose={onClose}
+        visible={showDrawer}
+        placement="left"
+      >
+        <div className={detail['detail-outline-content-mb']}>
+          {tocify && tocify.render()}
+        </div>
+      </Drawer>
     </div>
   );
 };

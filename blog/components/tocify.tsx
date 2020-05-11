@@ -35,7 +35,7 @@ export default class Tocify {
       let lastItem = last(items) as TocItem; // 最后一个 item
 
       if (item.level > lastItem.level) { // item 是 lastItem 的 children
-        for (let i = lastItem.level + 1; i <= 2; i++) {
+        for (let i = lastItem.level + 1; i <= 3; i++) {
           const { children } = lastItem;
           if (!children) { // 如果 children 不存在
             lastItem.children = [item];
@@ -64,7 +64,7 @@ export default class Tocify {
 
   renderToc(items: TocItem[]) { // 递归 render
     return items.map(item => (
-      <Link key={item.anchor} href={`#${item.anchor}`} title={item.text}>
+      <Link key={item.anchor} href={`#${item.anchor}`} title={item.text} target="_self">
         {item.children && this.renderToc(item.children)}
       </Link>
     ));

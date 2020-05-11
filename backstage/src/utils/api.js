@@ -1,5 +1,5 @@
-// const HOST_URI = 'http://39.101.223.208:7001/admin/';
-const HOST_URI = 'http://localhost:7001/admin/';
+const HOST_URI = 'http://39.101.223.208:7001/admin/';
+// const HOST_URI = 'http://localhost:7001/admin/';
 
 const LOGIN = 'login';
 const GET_TYPE_LIST = 'get_type_list';

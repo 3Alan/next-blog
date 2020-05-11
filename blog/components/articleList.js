@@ -67,7 +67,7 @@ const ArticleList = ({
             />,
             showTag ? (
               <Link href={`/collection?id=${item.typeId}`}>
-                <Tag color={item.specialColor} style={{ cursor: 'pointer' }}>
+                <Tag color={item.specialColor} style={{ cursor: 'pointer' }} className="hvr-pulse-grow">
                   {item.typeName}
                 </Tag>
               </Link>
@@ -82,6 +82,7 @@ const ArticleList = ({
                 width={272}
                 alt="logo"
                 src={item.img}
+                style={{borderRadius: 6}}
               />
             ) : (
               ''
@@ -96,7 +97,7 @@ const ArticleList = ({
                   query: { id: item.id },
                 }}
               >
-                <a>{showPin ? (<Tag icon={<PushpinOutlined />} color="red">顶置文章</Tag>) : ''}{item.title}</a>
+                <a>{showPin ? (<Tag icon={<PushpinOutlined />} color="red">顶置</Tag>) : ''}{item.title}</a>
               </Link>
             }
             description={

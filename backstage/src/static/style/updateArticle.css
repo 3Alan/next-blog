@@ -13,7 +13,7 @@
 }
 .editor-preview-side blockquote, .editor-preview blockquote {
   padding: 20px;
-  background: #ebf3fa;
+  background: rgba(235, 243, 250, 0.5);
   position: relative;
   border-radius: 2px;
   color: #888;
@@ -56,23 +56,48 @@
   background-color:#f3f3f3;
   border-radius:3px;
   font-size: 12px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color:#1890ff;
+  padding: 2px 5px;
+  color:#096dd9;
   margin: 0px 3px;
 }
 .editor-preview-side iframe, .editor-preview iframe{
   height: 34rem;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 .editor-preview-side h2, .editor-preview h2 {
-  padding-bottom: 6px;
-  border-bottom: 1px solid #EEE;
+  padding-left: 10px;
   margin-bottom: 20px;
   font-size: 20px;
   font-weight: bold;
+  position: relative;
+}
+.editor-preview-side h2::before, .editor-preview h2::before {
+  position: absolute;
+  content: '';
+  width: 4px;
+  height: 80%;
+  left: 0;
+  top: 10%;
+  background: #40a9ff;
 }
 .editor-preview-side h3, .editor-preview h3  {
-  font-size: 18px;
+  font-size: 16px;
+  margin-top: 10px;
+  position: relative;
+  padding-left: 15px;
+  font-weight: bold;
+}
+.editor-preview-side h3::before, .editor-preview h3::before {
+  position: absolute;
+  content: '';
+  width: 6px;
+  height: 24%;
+  border-radius: 100px;
+  left: 0;
+  top: 38%;
+  background: #40a9ff;
 }
 .editor-preview-side ul, .editor-preview ul {
   padding-left: 1.5rem;
