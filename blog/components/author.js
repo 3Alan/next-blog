@@ -11,11 +11,13 @@ const Author = () => {
   const num = 981;
   return (
     <div className={author.container}>
-      <Avatar
-        size={100}
-        src="https://gitee.com/alannum3/MyImages/raw/master/img/20200508165134.png"
-        className="hvr-float-shadow"
-      />
+      <a href="http://39.101.223.208:7000/backstage" target="_blank">
+        <Avatar
+          size={100}
+          src="https://gitee.com/alannum3/MyImages/raw/master/img/20200508165134.png"
+          className="hvr-float-shadow"
+        ></Avatar>
+      </a>
       <div className={author.name}>Alan</div>
       <div className={author.introduction}>
         <DribbbleSquareOutlined

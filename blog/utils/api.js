@@ -1,5 +1,5 @@
-const HOST_URI = 'http://39.101.223.208:7001/blog/';
-// const HOST_URI = 'http://localhost:7001/blog/';
+// const HOST_URI = 'http://39.101.223.208:7001/blog/';
+const HOST_URI = 'http://localhost:7001/blog/';
 
 const GET_ARTICLE_LIST = 'get_article_list';
 const GET_SPECIAL_LIST = 'get_special_list';
